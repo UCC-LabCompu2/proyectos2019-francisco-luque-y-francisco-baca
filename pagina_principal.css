@@ -10,7 +10,7 @@ body{
 .relative2 {
     position: relative;
     width: 600px;
-    height: 200px;
+    height: 320px;
 }
 .absolute2 {
     position: absolute;
@@ -32,11 +32,16 @@ button{
 }
 
  .grafico{
-     width="500px";
-     height="300px";
-     style="border:1px solid #000000";
+     width: 500px;
+     height: 300px;
+     border:1px solid #000000;
      background-color: white;
  }
  .titulo1{
      column-count: 2;
+ }
+
+ .creditos {
+     position: fixed;
+     bottom:0px;
  }
