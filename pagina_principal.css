@@ -1,0 +1,42 @@
+img{
+    width: 100px;
+}
+body{
+    background-color: grey;
+}
+ h1{
+    font-family: "Times New Roman","Arial";
+ }
+.relative2 {
+    position: relative;
+    width: 600px;
+    height: 200px;
+}
+.absolute2 {
+    position: absolute;
+    top: 120px;
+    right: 400px;
+    width: 300px;
+    height: 200px;
+}
+ /*relative1{
+     position: relative;
+     background-color: white;
+     width: 100px;
+ }*/
+ .inputs{
+
+ }
+button{
+    margin: 5px;
+}
+
+ .grafico{
+     width="500px";
+     height="300px";
+     style="border:1px solid #000000";
+     background-color: white;
+ }
+ .titulo1{
+     column-count: 2;
+ }

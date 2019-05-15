@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Graficadora Trigonometrica</title>
+    <link  rel="stylesheet" href="pagina_principal.css" type="text/css">
+</head>
+<body>
+    <header class="titulo1">
+        <h1>Graficadora de Funciones Trigonometricas</h1>
+        <img id="seno_img" src="imagenes/imagen_seno.png" class="relative1">
+        </header>
+    <div id="graficador_div" class="relative2">
+        <canvas id="grafico" class="grafico"></canvas>
+    </div>
+    <div id="inputs" class="absolute2">
+        <div>
+            Funcion a Graficar: y=
+            <input type="text" name="funcion">
+        </div>
+        <div>
+            Atajos:<p>
+            <button type="button" id="seno">sin(x)</button>
+            <button type="button" id="coseno">cos(x)</button>
+            <button type="button" id="tangente">tan(x)</button>
+            </p><p>
+            <button type="button" id="raizC">√x</button>
+            <button type="button" id="raizA"><sup>a</sup>√x</button>
+            <button type="button" id="cuadrado">x<sup>2</sup></button>
+            <button type="button" id="xA">x<sup>a</sup></button>
+            </p><p>
+            <button type="button" id="mas">+</button>
+            <button type="button" id="menos">-</button>
+            <button type="button" id="por">*</button>
+            <button type="button" id="dividido">/</button>
+        </p>
+
+        </div>
+        <p>
+            <button type="button" id="graficar">Graficar!</button>
+        </p>
+    </div>
+    <div id="resultados">
+        Resultados:
+        <div>
+            <p>
+                Dominio:
+            </p>
+            <p>
+                Imagen:
+            </p>
+            <p>
+                Signos:
+            </p>
+            <p>
+                Paridad:
+            </p>
+        </div>
+    </div>
+</body>
+</html>
