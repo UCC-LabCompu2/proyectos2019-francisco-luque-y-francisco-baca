@@ -1,0 +1,23 @@
+img{
+    width: 100px;
+}
+body{
+    background-color: grey;
+}
+ h1{
+    font-family: "Times New Roman","Arial";
+ }
+ .creditos {
+     position: fixed;
+     bottom:0px;
+ }
+ .titulo1{
+     column-count: 2;
+ }
+.subtitulo{
+    text-decoration: underline;
+}
+
+.propiedades{
+  margin-left: 10px;
+}
