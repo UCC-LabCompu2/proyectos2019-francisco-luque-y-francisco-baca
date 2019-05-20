@@ -21,3 +21,8 @@ body{
 .propiedades{
   margin-left: 10px;
 }
+
+.creditos {
+    position: fixed;
+    bottom:0px;
+}
