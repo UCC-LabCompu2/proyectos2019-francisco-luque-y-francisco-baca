@@ -1,9 +1,9 @@
 # Graficadora de Funciones Trigonometricas
 
 El objetivo de esta pagina es poder ser capaz de graficar funciones sencillas de tipo trigonometrico y dar algunas propiedades de ellas.
-```
+
 [Link a la Página](https://ucc-labcompu2.github.io/proyectos2019-francisco-luque-y-francisco-baca/)
-```
+
 ## Vision para la pagina
 
 Se busca que esta pagina sea de ayuda para aquellos empezando a entender temas del analisis matematico, en particular, el analisis de funciones simples de una variable.
