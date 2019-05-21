@@ -21,7 +21,7 @@ body{
 .propiedades{
   margin-left: 10px;
     position: relative;
-    
+
 }
 
 .creditos {
@@ -29,7 +29,7 @@ body{
     bottom:0px;
     right: 200px;
 }
-.relative3 {
+#funciones_trigonometricas {
     position: relative;
     width: 550px;
     height: 250px;
