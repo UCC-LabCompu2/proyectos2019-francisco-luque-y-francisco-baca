@@ -2,7 +2,7 @@ img{
     width: 100px;
 }
 body{
-    background-color: grey;
+    background-color: wheat;
 }
  h1{
     font-family: "Times New Roman","Arial";
@@ -20,9 +20,34 @@ body{
 
 .propiedades{
   margin-left: 10px;
+    position: relative;
+    
 }
 
 .creditos {
     position: fixed;
     bottom:0px;
+    right: 200px;
+}
+.relative3 {
+    position: relative;
+    width: 550px;
+    height: 250px;
+}
+.dominio {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    right: 500px;
+    top: 80px;
+}
+.funciones {
+
+}
+.paridad {
+    position: absolute;
+    width: 250px;
+    height: 150px;
+    right: 500px;
+    top: 380px;
 }

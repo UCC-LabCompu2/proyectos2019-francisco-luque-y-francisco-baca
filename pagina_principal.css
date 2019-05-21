@@ -2,7 +2,7 @@ img{
     width: 100px;
 }
 body{
-    background-color: grey;
+    background-color: wheat;
 }
  h1{
     font-family: "Times New Roman","Arial";
@@ -44,4 +44,5 @@ button{
  .creditos {
      position: fixed;
      bottom:0px;
+     right: 200px;
  }
