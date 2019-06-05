@@ -38,8 +38,9 @@ body{
     position: absolute;
     width: 200px;
     height: 100px;
-    right: 500px;
+    right: 0px;
     top: 80px;
+    display: inline-block;
 }
 .funciones {
 
@@ -48,6 +49,7 @@ body{
     position: absolute;
     width: 250px;
     height: 150px;
-    right: 500px;
-    top: 380px;
+    right: 0px;
+    top: 480px;
+    display: inline-block
 }
