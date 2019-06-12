@@ -37,6 +37,12 @@ function crearGrilla(){
     ctx.closePath();
 }
 
+function graficarFuncion()
+{
+    var canvas = document.getElementById("grafico");
+    var ctx = canvas.getContext("2d");
+
+}
 function getSeleccion(id_elem)
 {
 
@@ -50,5 +56,30 @@ function getSeleccion(id_elem)
 }
 
 function interpretOp(){
+
+}
+
+function updateVal() {
+    var el = document.getElementById("formulario").elements;
+    var radios = el.trigF;
+    var cons=el.tipoFuncion;
+    if (radios.value === "seno") {
+        {
+            cons.value = "sin";
+            console.log("llegue!");
+        }
+
+    } else if (radios.value === "coseno") {
+        {
+            cons.value = "cos";
+            console.log("llegue!");
+        }
+
+    } else if (radios.value === "tangente") {
+        {
+            cons.value = "tan";
+            console.log("llegue!");
+        }
+    }
 
 }
