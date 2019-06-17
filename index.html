@@ -4,61 +4,70 @@
 
     <meta charset="UTF-8">
     <title>Graficadora Trigonometrica</title>
-    <link  rel="stylesheet" href="index.css" type="text/css">
+    <link rel="stylesheet" href="index.css" type="text/css">
+    <script type="text/javascript" src="funciones.js"></script>
+    <script src="math.js" type="text/javascript"></script>
 </head>
-<body>
-    <header class="titulo1">
-        <h1>Graficadora de Funciones Trigonometricas</h1>
-        <img id="seno_img" src="imagenes/imagen_seno.png" class="relative1">
-    </header>
-        <h2>Pagina Principal >> <a href="teoria.html">Marco Teorico</a></h2>
-    <div id="graficador_div" class="relative2">
-        <canvas id="grafico" class="grafico"></canvas>
-    </div>
-    <div id="inputs" class="absolute2">
-        <div>
+<body onload="crearGrilla()">
+<header class="titulo1">
+    <h1>Graficadora de Funciones Trigonometricas</h1>
+    <img id="seno_img" src="imagenes/imagen_seno.png" class="relative1">
+</header>
+<h2>Pagina Principal >> <a href="teoria.html">Marco Teorico</a></h2>
+<div id="graficador_div" class="relative2">
+    <canvas id="grafico" class="grafico"></canvas>
+</div>
+<div id="inputs" class="absolute2">
+    <form id="formulario">
+        <div class="inputfunc">
             Funcion a Graficar: y=
-            <input type="text" name="funcion">
+            <input type="number" name="funcion" placeholder="1"><input type="textbox" name="tipoFuncion" disabled><input
+                type="text" name="argX" placeholder="x">
         </div>
         <div>
             Atajos:<p>
-            <button type="button" id="seno">sin(x)</button>
-            <button type="button" id="coseno">cos(x)</button>
-            <button type="button" id="tangente">tan(x)</button>
-            </p><p>
-            <button type="button" id="raizC">√x</button>
-            <button type="button" id="raizA"><sup>a</sup>√x</button>
-            <button type="button" id="cuadrado">x<sup>2</sup></button>
-            <button type="button" id="xA">x<sup>a</sup></button>
-            </p><p>
-            <button type="button" id="mas">+</button>
-            <button type="button" id="menos">-</button>
-            <button type="button" id="por">*</button>
-            <button type="button" id="dividido">/</button>
+            <input type="radio" name="trigF" value="sin" checked onchange="updateVal()">sin(x)</input>
+            <input type="radio" name="trigF" value="cos" onchange="updateVal()">cos(x)</input>
+            <input type="radio" name="trigF" value="tan" onchange="updateVal()">tan(x)</input>
         </p>
+            <p>
+                <button type="button" id="raizC">√x</button>
+                <button type="button" id="raizA"><sup>a</sup>√x</button>
+                <button type="button" id="cuadrado">x<sup>2</sup></button>
+                <button type="button" id="xA">x<sup>a</sup></button>
+            </p>
+            <p>
+                <button type="button" id="mas">+</button>
+                <button type="button" id="menos">-</button>
+                <button type="button" id="por">*</button>
+                <button type="button" id="dividido">/</button>
+            </p>
 
         </div>
         <p>
-            <button type="button" id="graficar">Graficar!</button>
+            <button type="button" id="graficar" onclick="graficarFuncion()">Graficar!</button>
+        </p>
+    </form>
+</div>
+<div id="resultados">
+    <form id="resultados">
+    Resultados:
+    <div>
+        <p>
+            Dominio: <input type="text" id="outputDominio" disabled><a href="teoria.html" target="_blank">(?)</a>
+        </p>
+        <p>
+            Imagen: <input type="text" id="outputImagen" disabled><a href="teoria.html" target="_blank">(?)</a>
+        </p>
+        <p>
+            Signos: <input type="text" id="outputSigno" disabled><a href="teoria.html" target="_blank">(?)</a>
+        </p>
+        <p>
+            Paridad: <input type="text" id="outputParidad" disabled><a href="teoria.html" target="_blank">(?)</a>
         </p>
     </div>
-    <div id="resultados">
-        Resultados:
-        <div>
-            <p>
-                Dominio: <input type="text" id="outputDominio" disabled><a href="teoria.html" target="_blank">(?)</a>
-            </p>
-            <p>
-                Imagen: <input type="text" id="outputImagen" disabled><a href="teoria.html" target="_blank">(?)</a>
-            </p>
-            <p>
-                Signos: <input type="text" id="outputSigno" disabled><a href="teoria.html" target="_blank">(?)</a>
-            </p>
-            <p>
-                Paridad: <input type="text" id="outputParidad" disabled><a href="teoria.html" target="_blank">(?)</a>
-            </p>
-        </div>
-    </div>
+    </form>
+</div>
 <div class="creditos"><i>Francisco Luque y Francisco Baca</i></div>
 </body>
 </html>
