@@ -52,6 +52,9 @@ function graficarFuncion()
     prev+=canvas.height/2;
     prev*=10;
     ctx.lineWidth=0.2;
+    ctx.fillStyle="green";
+    ctx.font = "15px Arial";
+    ctx.fillText(func, 0, 30);
     ctx.fillStyle="black";
     ctx.beginPath();
     ctx.moveTo(0, prev);
