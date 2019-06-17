@@ -2,6 +2,7 @@
  * Created by Alumno on 05/06/2019.
  */
 
+
 function crearGrilla(){
     var canvas = document.getElementById("grafico");
     var ctx = canvas.getContext("2d");
@@ -39,9 +40,34 @@ function crearGrilla(){
 
 function graficarFuncion()
 {
+    crearGrilla();
     var canvas = document.getElementById("grafico");
     var ctx = canvas.getContext("2d");
+    var funcL=document.getElementById("formulario").elements;
+    var funcP=String(funcL.funcion.value)+"*"+String(funcL.trigF.value)+"("+String(funcL.argX.value)+")";
+    var func=funcP.split('').join('');
+    var i=0;
+    var aux=math.compile(func);
+    var prev=aux.evaluate({x:   i});
+    prev+=canvas.height/2;
+    prev*=10;
+    ctx.lineWidth=0.2;
+    ctx.fillStyle="black";
+    ctx.beginPath();
+    ctx.moveTo(0, prev);
+    for(i=1;i<canvas.width;i+=1)
+    try {
+        var result = aux.evaluate({x : i});
+        result*=10;
+        result+=canvas.height/2;
+       // ctx.moveTo(i - 1, prev);
+        ctx.lineTo(i, result);
+        prev = result;
+    } catch {
 
+    }
+    ctx.stroke();
+    ctx.closePath();
 }
 function getSeleccion(id_elem)
 {
@@ -59,27 +85,33 @@ function interpretOp(){
 
 }
 
+
 function updateVal() {
     var el = document.getElementById("formulario").elements;
     var radios = el.trigF;
     var cons=el.tipoFuncion;
-    if (radios.value === "seno") {
+    if (radios.value === "sin") {
         {
             cons.value = "sin";
             console.log("llegue!");
         }
 
-    } else if (radios.value === "coseno") {
+    } else if (radios.value === "cos") {
         {
             cons.value = "cos";
             console.log("llegue!");
         }
 
-    } else if (radios.value === "tangente") {
+    } else if (radios.value === "tan") {
         {
             cons.value = "tan";
             console.log("llegue!");
         }
     }
+
+}
+
+function botongraficar()
+{
 
 }

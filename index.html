@@ -6,6 +6,7 @@
     <title>Graficadora Trigonometrica</title>
     <link rel="stylesheet" href="index.css" type="text/css">
     <script type="text/javascript" src="funciones.js"></script>
+    <script src="math.js" type="text/javascript"></script>
 </head>
 <body onload="crearGrilla()">
 <header class="titulo1">
@@ -25,9 +26,9 @@
         </div>
         <div>
             Atajos:<p>
-            <input type="radio" name="trigF" value="seno" checked onchange="updateVal()">sin(x)</input>
-            <input type="radio" name="trigF" value="coseno" onchange="updateVal()">cos(x)</input>
-            <input type="radio" name="trigF" value="tangente" onchange="updateVal()">tan(x)</input>
+            <input type="radio" name="trigF" value="sin" checked onchange="updateVal()">sin(x)</input>
+            <input type="radio" name="trigF" value="cos" onchange="updateVal()">cos(x)</input>
+            <input type="radio" name="trigF" value="tan" onchange="updateVal()">tan(x)</input>
         </p>
             <p>
                 <button type="button" id="raizC">√x</button>
@@ -44,11 +45,12 @@
 
         </div>
         <p>
-            <button type="button" id="graficar">Graficar!</button>
+            <button type="button" id="graficar" onclick="graficarFuncion()">Graficar!</button>
         </p>
     </form>
 </div>
 <div id="resultados">
+    <form id="resultados">
     Resultados:
     <div>
         <p>
@@ -64,6 +66,7 @@
             Paridad: <input type="text" id="outputParidad" disabled><a href="teoria.html" target="_blank">(?)</a>
         </p>
     </div>
+    </form>
 </div>
 <div class="creditos"><i>Francisco Luque y Francisco Baca</i></div>
 </body>
