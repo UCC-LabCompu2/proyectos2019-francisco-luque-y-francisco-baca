@@ -55,10 +55,11 @@ function graficarFuncion()
     ctx.fillStyle="green";
     ctx.font = "15px Arial";
     ctx.fillText(func, 0, 30);
-    ctx.fillStyle="black";
+    ctx.fillStyle="red";
+    ctx.lineWidth=0.4;
     ctx.beginPath();
     ctx.moveTo(0, prev);
-    for(i=1;i<canvas.width;i+=1)
+    for(i=1;i<canvas.width;i+=0.01)
     try {
         var auxX=i-canvas.width/2;
         var result = aux.evaluate({x : auxX});
@@ -97,19 +98,19 @@ function updateVal() {
     if (radios.value === "sin") {
         {
             cons.value = "sin";
-            console.log("llegue!");
+            //console.log("llegue!");
         }
 
     } else if (radios.value === "cos") {
         {
             cons.value = "cos";
-            console.log("llegue!");
+            //console.log("llegue!");
         }
 
     } else if (radios.value === "tan") {
         {
             cons.value = "tan";
-            console.log("llegue!");
+            //console.log("llegue!");
         }
     }
 
@@ -117,5 +118,9 @@ function updateVal() {
 
 function botongraficar()
 {
+}
 
+function anadiraString(sign){
+    var funcL=document.getElementById("formulario").elements.argX;
+    funcL.value+=sign;
 }
