@@ -48,6 +48,7 @@ function graficarFuncion()
     var func=funcP.split('').join('');
     var i=0;
     var aux=math.compile(func);
+<<<<<<< HEAD
     var prev=aux.evaluate({x:   i});
     prev+=canvas.height/2;
     prev*=10;
@@ -58,6 +59,23 @@ function graficarFuncion()
     for(i=1;i<canvas.width;i+=1)
     try {
         var result = aux.evaluate({x : i});
+=======
+    var prev=aux.evaluate({x:   (i-canvas.width/2)});
+    prev+=canvas.height/2;
+    prev*=10;
+    ctx.lineWidth=0.2;
+    ctx.fillStyle="green";
+    ctx.font = "15px Arial";
+    ctx.fillText(func, 0, 30);
+    ctx.fillStyle="red";
+    ctx.lineWidth=0.4;
+    ctx.beginPath();
+    ctx.moveTo(0, prev);
+    for(i=1;i<canvas.width;i+=0.01)
+    try {
+        var auxX=i-canvas.width/2;
+        var result = aux.evaluate({x : auxX});
+>>>>>>> gh-pages
         result*=10;
         result+=canvas.height/2;
        // ctx.moveTo(i - 1, prev);
@@ -93,19 +111,31 @@ function updateVal() {
     if (radios.value === "sin") {
         {
             cons.value = "sin";
+<<<<<<< HEAD
             console.log("llegue!");
+=======
+            //console.log("llegue!");
+>>>>>>> gh-pages
         }
 
     } else if (radios.value === "cos") {
         {
             cons.value = "cos";
+<<<<<<< HEAD
             console.log("llegue!");
+=======
+            //console.log("llegue!");
+>>>>>>> gh-pages
         }
 
     } else if (radios.value === "tan") {
         {
             cons.value = "tan";
+<<<<<<< HEAD
             console.log("llegue!");
+=======
+            //console.log("llegue!");
+>>>>>>> gh-pages
         }
     }
 
@@ -113,5 +143,13 @@ function updateVal() {
 
 function botongraficar()
 {
+<<<<<<< HEAD
 
+=======
+}
+
+function anadiraString(sign){
+    var funcL=document.getElementById("formulario").elements.argX;
+    funcL.value+=sign;
+>>>>>>> gh-pages
 }
