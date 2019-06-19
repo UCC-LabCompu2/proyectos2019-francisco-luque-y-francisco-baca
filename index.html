@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,28 +16,29 @@
 </header>
 <h2>Pagina Principal >> <a href="teoria.html">Marco Teorico</a></h2>
 <div id="graficador_div" class="relative2">
-    <canvas id="grafico" class="grafico"></canvas>
+    <canvas id="grafico" class="grafico" width="500" height="300"></canvas>
 </div>
 <div id="inputs" class="absolute2">
     <form id="formulario">
         <div class="inputfunc">
             Funcion a Graficar: y=
-            <input type="number" name="funcion" placeholder="Multiplicador de Funcion" value="1"><input type="textbox" name="tipoFuncion" disabled value="sin"><input
-                type="text" id="Input2" name="argX" placeholder="x" value="x">
+            <input type="number" name="funcion" placeholder="Multiplicador de Funcion" value="1">
+            <input type="textbox" name="tipoFuncion" disabled value="sin">
+            <input type="text" id="Input2" name="argX" placeholder="x" value="x">
         </div>
         <div>
             Tipo de Ángulo interior a la Función:
             <p>
-                <input type="radio" name="valFuncInt" value="grados" checked >Grados</input>
-                <input type="radio" name="valFuncInt" value="radianes" >Radianes</input>
+                <input type="radio" name="valFuncInt" value="grados" checked>Grados</input>
+                <input type="radio" name="valFuncInt" value="radianes">Radianes</input>
             </p>
             Atajos:<p>
             <input type="radio" name="trigF" value="sin" checked onchange="updateVal()">sin(x)</input>
             <input type="radio" name="trigF" value="cos" onchange="updateVal()">cos(x)</input>
             <input type="radio" name="trigF" value="tan" onchange="updateVal()">tan(x)</input>
-            </p>
+        </p>
             <p>
-                <input type="radio" name="trigF" value="csc" checked onchange="updateVal()">cosec(x)</input>
+                <input type="radio" name="trigF" value="csc" onchange="updateVal()">cosec(x)</input>
                 <input type="radio" name="trigF" value="sec" onchange="updateVal()">sec(x)</input>
                 <input type="radio" name="trigF" value="cot" onchange="updateVal()">cotan(x)</input>
             </p>

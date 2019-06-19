@@ -1,18 +1,20 @@
-img{
+img {
     width: 100px;
 }
-body{
+
+body {
     background-color: wheat;
 }
-h1{
-    font-family: "Times New Roman","Arial";
+
+h1 {
+    font-family: "Times New Roman", "Arial";
 }
+
 .relative2 {
     position: relative;
     width: 600px;
     height: 320px;
 }
-
 
 .absolute2 {
     position: absolute;
@@ -22,36 +24,37 @@ h1{
     height: 200px;
 }
 
-
 /*relative1{
     position: relative;
     background-color: white;
     width: 100px;
 }*/
-.inputs{
+.inputs {
 
 }
-button{
+
+button {
     margin: 5px;
 }
 
-.grafico{
+.grafico {
     width: 500px;
     height: 300px;
-    border:1px solid #000000;
+    border: 1px solid #000000;
     background-color: white;
 }
-.titulo1{
+
+.titulo1 {
     column-count: 2;
 }
 
 .creditos {
     position: fixed;
-    bottom:0px;
+    bottom: 0px;
     right: 200px;
 }
 
-.inputfunc{
+.inputfunc {
 
 }
 
