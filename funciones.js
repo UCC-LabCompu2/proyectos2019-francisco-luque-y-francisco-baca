@@ -124,3 +124,12 @@ function anadiraString(sign){
     var funcL=document.getElementById("formulario").elements.argX;
     funcL.value+=sign;
 }
+function EC(){
+    var i= document.getElementById("Input2").value;
+    i=math.evaluate(i, {x: 1});
+    if(isNaN(i)){
+       alert("Se ingreso un valor invalido en el termino de adentro de la funcion.");
+       document.getElementById("Input2").value="";
+   }else
+   return i;
+}

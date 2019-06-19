@@ -12,13 +12,17 @@ body{
     width: 600px;
     height: 320px;
 }
-.absolute2 {
-    position: absolute;
-    top: 120px;
-    right: 400px;
-    width: 300px;
-    height: 200px;
+
+@media (min-width: 601px) {
+    .absolute2 {
+        position: absolute;
+        top: 120px;
+        right: 400px;
+        width: 300px;
+        height: 200px;
+    }
 }
+
  /*relative1{
      position: relative;
      background-color: white;
@@ -50,3 +54,9 @@ button{
  .inputfunc{
 
  }
+
+@media (max-width: 600px) {
+    .absolute2 {
+        position: relative;
+    }
+}
