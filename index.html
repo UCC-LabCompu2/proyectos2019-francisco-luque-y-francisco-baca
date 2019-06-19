@@ -27,11 +27,21 @@
                 type="text" id="Input2" name="argX" placeholder="x" value="x">
         </div>
         <div>
+            Tipo de Ángulo interior a la Función:
+            <p>
+                <input type="radio" name="valFuncInt" value="grados" checked >Grados</input>
+                <input type="radio" name="valFuncInt" value="radianes" >Radianes</input>
+            </p>
             Atajos:<p>
             <input type="radio" name="trigF" value="sin" checked onchange="updateVal()">sin(x)</input>
             <input type="radio" name="trigF" value="cos" onchange="updateVal()">cos(x)</input>
             <input type="radio" name="trigF" value="tan" onchange="updateVal()">tan(x)</input>
-        </p>
+            </p>
+            <p>
+                <input type="radio" name="trigF" value="csc" checked onchange="updateVal()">cosec(x)</input>
+                <input type="radio" name="trigF" value="sec" onchange="updateVal()">sec(x)</input>
+                <input type="radio" name="trigF" value="cot" onchange="updateVal()">cotan(x)</input>
+            </p>
             <p>
                 <button type="button" id="sqrt" onclick="anadiraString('sqrt(x)')">√x</button>
                 <button type="button" id="rootA" onclick="anadiraString('pow(x,1/a)')"><sup>a</sup>√x</button>
@@ -39,6 +49,8 @@
                 <button type="button" id="xA" onclick="anadiraString('pow(x,a)')">x<sup>a</sup></button>
             </p>
             <p>
+
+                <button type="button" id="equis" onclick="anadiraString('x')">x</button>
                 <button type="button" id="mas" onclick="anadiraString('+')">+</button>
                 <button type="button" id="menos" onclick="anadiraString('-')">-</button>
                 <button type="button" id="por" onclick="anadiraString('*')">*</button>
@@ -48,27 +60,27 @@
 
         </div>
         <p>
-            <button type="button" id="graficar" onclick="graficarFuncion(); EC()">Graficar!</button>
+            <button type="button" id="graficar" onclick="botongraficar()">Graficar!</button>
         </p>
     </form>
 </div>
 <div id="resultados">
     <form id="resultados">
-    Resultados:
-    <div>
-        <p>
-            Dominio: <input type="text" id="outputDominio" disabled><a href="teoria.html" target="_blank">(?)</a>
-        </p>
-        <p>
-            Imagen: <input type="text" id="outputImagen" disabled><a href="teoria.html" target="_blank">(?)</a>
-        </p>
-        <p>
-            Signos: <input type="text" id="outputSigno" disabled><a href="teoria.html" target="_blank">(?)</a>
-        </p>
-        <p>
-            Paridad: <input type="text" id="outputParidad" disabled><a href="teoria.html" target="_blank">(?)</a>
-        </p>
-    </div>
+        Resultados:
+        <div>
+            <!--<p>
+                Dominio: <input type="text" id="outputDominio" disabled><a href="teoria.html" target="_blank">(?)</a>
+            </p>
+            <p>
+                Imagen: <input type="text" id="outputImagen" disabled><a href="teoria.html" target="_blank">(?)</a>
+            </p>
+            <p>
+                Signos: <input type="text" id="outputSigno" disabled><a href="teoria.html" target="_blank">(?)</a>
+            </p>-->
+            <p>
+                Paridad: <input type="text" id="outputParidad" disabled><a href="teoria.html" target="_blank">(?)</a>
+            </p>
+        </div>
     </form>
 </div>
 <div class="creditos"><i>Francisco Luque y Francisco Baca</i></div>
