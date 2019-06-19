@@ -7,37 +7,35 @@
  * igual a 0.2, luego crea los ejes principales mediante lineas de grosor 2 en el medio horizontal y vertical del canvas.
  * @method crearGrilla
  */
-function crearGrilla(){
+function crearGrilla() {
     var canvas = document.getElementById("grafico");
     var ctx = canvas.getContext("2d");
 
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.lineWidth=0.2;
-    ctx.fillStyle="#000";
+    ctx.lineWidth = 0.2;
+    ctx.fillStyle = "#000";
     ctx.beginPath();
-    for(var i=0;i<canvas.width;i+=10)
-    {
+    for (var i = 0; i < canvas.width; i += 10) {
 
-        ctx.moveTo(i,0);
-        ctx.lineTo(i,canvas.height);
+        ctx.moveTo(i, 0);
+        ctx.lineTo(i, canvas.height);
 
     }
 
-    for(var i=0;i<canvas.height;i+=10)
-    {
-        ctx.moveTo(0,i);
-        ctx.lineTo(canvas.width,i);
+    for (var i = 0; i < canvas.height; i += 10) {
+        ctx.moveTo(0, i);
+        ctx.lineTo(canvas.width, i);
     }
     ctx.stroke();
     ctx.closePath();
 
-    ctx.lineWidth=2;
+    ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.moveTo(0,canvas.height/2);
-    ctx.lineTo(canvas.width,canvas.height/2);
-    ctx.moveTo(canvas.width/2,0);
-    ctx.lineTo(canvas.width/2,canvas.height);
+    ctx.moveTo(0, canvas.height / 2);
+    ctx.lineTo(canvas.width, canvas.height / 2);
+    ctx.moveTo(canvas.width / 2, 0);
+    ctx.lineTo(canvas.width / 2, canvas.height);
     ctx.stroke();
     ctx.closePath();
 }
@@ -49,48 +47,59 @@ function crearGrilla(){
  * Ademas para mayor entendimiento, imprime el texto de la funcion ya compuesta en la esquina superior izquierda.
  * @method graficarFuncion
  */
-function graficarFuncion()
-{
+function graficarFuncion() {
     crearGrilla();
     var canvas = document.getElementById("grafico");
     var ctx = canvas.getContext("2d");
-    var funcL=document.getElementById("formulario").elements;
-    if(document.getElementById("formulario").elements.valFuncInt.value=="grados")
-    {
-        var funcP=String(funcL.funcion.value)+"*"+String(funcL.trigF.value)+"(("+String(funcL.argX.value)+")*pi/180)";
+    var funcL = document.getElementById("formulario").elements;
+    if (document.getElementById("formulario").elements.valFuncInt.value == "grados") {
+        var funcP = String(funcL.funcion.value) + "*" + String(funcL.trigF.value) + "((" + String(funcL.argX.value) + ")*pi/180)";
     }
-    else
-    {
-        var funcP=String(funcL.funcion.value)+"*"+String(funcL.trigF.value)+"("+String(funcL.argX.value)+")";
+    else {
+        var funcP = String(funcL.funcion.value) + "*" + String(funcL.trigF.value) + "(" + String(funcL.argX.value) + ")";
     }
-    var func=funcP.split('').join('');
-    var i=0;
-    var aux=math.compile(func);
-    var prev=aux.evaluate({x:   (i-canvas.width/2)});
-    prev+=canvas.height/2;
-    prev*=10;
-    ctx.lineWidth=0.2;
-    ctx.fillStyle="green";
+    var func = funcP.split('').join('');
+    var i = 0;
+    var aux = math.compile(func);
+    var prev = aux.evaluate({x: (i - canvas.width / 2)});
+    prev += canvas.height / 2;
+    prev *= 10;
+    ctx.lineWidth = 0.2;
+    ctx.fillStyle = "green";
     ctx.font = "15px Arial";
     ctx.fillText(func, 0, 30);
-    ctx.fillStyle="red";
-    ctx.lineWidth=0.4;
-    ctx.beginPath();
-    ctx.moveTo(0, prev);
-    for(i=1;i<canvas.width;i+=0.01)
-        try {
-            var auxX=i-canvas.width/2;
-            var result = aux.evaluate({x : auxX});
-            result*=10;
-            result+=canvas.height/2;
-            // ctx.moveTo(i - 1, prev);
-            ctx.lineTo(i, result);
-            prev = result;
-        } catch{}
-    ctx.stroke();
-    ctx.closePath();
-}
+    ctx.fillStyle = "red";
+    ctx.lineWidth = 0.4;
 
+    ctx.moveTo(0, prev);
+
+    var id = setInterval(graficarFuncionAnimada, 1);
+    var auxX;
+    var result;
+
+    function graficarFuncionAnimada() {
+        ctx.beginPath();
+        if (i == canvas.width) {
+            clearInterval(id);
+        } else {
+            try {
+                auxX = i - canvas.width / 2;
+                result = aux.evaluate({x: auxX});
+                result *= 10;
+                result += canvas.height / 2;
+                ctx.moveTo(i - 1, prev);
+                ctx.lineTo(i, result);
+                prev = result;
+            } catch (a) {
+
+            }
+
+            i++;
+            ctx.stroke();
+            ctx.closePath();
+        }
+    }
+}
 
 
 /**
@@ -100,26 +109,23 @@ function graficarFuncion()
 function updateVal() {
     var el = document.getElementById("formulario").elements;
     var radios = el.trigF;
-    var cons=el.tipoFuncion;
-    cons.value=radios.value;
+    var cons = el.tipoFuncion;
+    cons.value = radios.value;
 }
 /**
  * Funcion maestra, llamada cuando el usuario aprieta el boton de graficar. Busca si el termino dentro de la funcion trigonometrica es un numero cuando se reemplazan
  * las x por 1 llamando a EC(). De serlo grafica la funcion y calcula su paridad. De no serlo muestra mensaje de error y lo reemplaza por X.
  * @method botongraficar
  */
-function botongraficar()
-{
-    var i=EC();
-    if (i==1)
-    {
+function botongraficar() {
+    var i = EC();
+    if (i == 1) {
         encontrarParidad();
         graficarFuncion();
     }
-    else
-    {
+    else {
         alert("Se ingreso un valor invalido en el termino de adentro de la funcion, asegurese de que los términos esten multiplicados u operados entre sí, y de no usar letras que no sean x.");
-        document.getElementById("Input2").value="x";
+        document.getElementById("Input2").value = "x";
     }
 }
 /**
@@ -127,9 +133,9 @@ function botongraficar()
  * @method Nombre de la función
  * @param Signo_a_añadir sign
  */
-function anadiraString(sign){
-    var funcL=document.getElementById("formulario").elements.argX;
-    funcL.value+=sign;
+function anadiraString(sign) {
+    var funcL = document.getElementById("formulario").elements.argX;
+    funcL.value += sign;
 }
 /**
  * Validador del Input del usuario. Toma el valor dado en argX y prueba si es un numero compilandolo mediante math.compile y math.evaluate.
@@ -138,47 +144,41 @@ function anadiraString(sign){
  * @param Parámetro A
  * @return 1 si es compilable, 0 si no.
  */
-function EC(){
-    var i=document.getElementById("formulario").elements.argX.value;
-    var aux=math.compile(i);
-    try{
-        var prev=aux.evaluate({x: (1)});
+function EC() {
+    var i = document.getElementById("formulario").elements.argX.value;
+    var aux = math.compile(i);
+    try {
+        var prev = aux.evaluate({x: (1)});
         return 1;
     }
-    catch{
+    catch (a) {
         return 0;
-}
+    }
 }
 /**
  * Calcula si la funcion es par, impar o ninguna de las dos y muestra el resultado de esto por outputParidad
  * @method encontrarParidad
  */
-function encontrarParidad()
-{
-    var funcL=document.getElementById("formulario").elements;
-    if(document.getElementById("formulario").elements.valFuncInt.value=="grados")
-    {
-        var funcP=String(funcL.funcion.value)+"*"+String(funcL.trigF.value)+"(("+String(funcL.argX.value)+")*pi/180)";
+function encontrarParidad() {
+    var funcL = document.getElementById("formulario").elements;
+    if (document.getElementById("formulario").elements.valFuncInt.value == "grados") {
+        var funcP = String(funcL.funcion.value) + "*" + String(funcL.trigF.value) + "((" + String(funcL.argX.value) + ")*pi/180)";
     }
-    else
-    {
-        var funcP=String(funcL.funcion.value)+"*"+String(funcL.trigF.value)+"("+String(funcL.argX.value)+")";
+    else {
+        var funcP = String(funcL.funcion.value) + "*" + String(funcL.trigF.value) + "(" + String(funcL.argX.value) + ")";
     }
-    var func=funcP.split('').join('');
-    var i=0;
-    var aux=math.compile(func);
-    if(aux.evaluate({x:1})==aux.evaluate({x:-1}))
-    {
-        document.getElementById("outputParidad").value="Funcion Par";
+    var func = funcP.split('').join('');
+    var i = 0;
+    var aux = math.compile(func);
+    if (aux.evaluate({x: 1}) == aux.evaluate({x: -1})) {
+        document.getElementById("outputParidad").value = "Funcion Par";
     }
-    else if(aux.evaluate({x:1})==aux.evaluate({x:-1})*-1)
-    {
-        document.getElementById("outputParidad").value="Funcion Impar";
+    else if (aux.evaluate({x: 1}) == aux.evaluate({x: -1}) * -1) {
+        document.getElementById("outputParidad").value = "Funcion Impar";
 
     }
-    else
-    {
-        document.getElementById("outputParidad").value="Funcion No Impar ni Par";
+    else {
+        document.getElementById("outputParidad").value = "Funcion No Impar ni Par";
     }
 
 }
