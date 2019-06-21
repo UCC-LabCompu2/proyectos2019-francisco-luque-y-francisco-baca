@@ -1,6 +1,21 @@
 /**
  * Created by Alumno on 05/06/2019.
+ * Por Francisco Luque y Francisco Baca
  */
+
+/**
+ * Inicializado de Variables Globales
+ */
+var canvas;
+var ctx;
+var funcL;
+var funcP;
+var aux;
+var prev;
+var auxX;
+var result;
+var id;
+var iAux;
 
 /**
  * Creador de la Grilla del canvas, llena el canvas con una grilla de 10x10 unidades separadas con lineas de longitud
@@ -8,9 +23,9 @@
  * @method crearGrilla
  */
 function crearGrilla() {
-    var canvas = document.getElementById("grafico");
-    var ctx = canvas.getContext("2d");
-
+    canvas = document.getElementById("grafico");
+    ctx = canvas.getContext("2d");
+    funcL = document.getElementById("formulario").elements;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     ctx.lineWidth = 0.2;
@@ -47,21 +62,21 @@ function crearGrilla() {
  * Ademas para mayor entendimiento, imprime el texto de la funcion ya compuesta en la esquina superior izquierda.
  * @method graficarFuncion
  */
+
+
 function graficarFuncion() {
     crearGrilla();
-    var canvas = document.getElementById("grafico");
-    var ctx = canvas.getContext("2d");
-    var funcL = document.getElementById("formulario").elements;
+
+
     if (document.getElementById("formulario").elements.valFuncInt.value == "grados") {
-        var funcP = String(funcL.funcion.value) + "*" + String(funcL.trigF.value) + "((" + String(funcL.argX.value) + ")*pi/180)";
+        funcP = String(funcL.funcion.value) + "*" + String(funcL.trigF.value) + "((" + String(funcL.argX.value) + ")*pi/180)";
+    } else {
+        funcP = String(funcL.funcion.value) + "*" + String(funcL.trigF.value) + "(" + String(funcL.argX.value) + ")";
     }
-    else {
-        var funcP = String(funcL.funcion.value) + "*" + String(funcL.trigF.value) + "(" + String(funcL.argX.value) + ")";
-    }
-    var func = funcP.split('').join('');
-    var i = 0;
-    var aux = math.compile(func);
-    var prev = aux.evaluate({x: (i - canvas.width / 2)});
+    func = funcP.split('').join('');
+    iAux = 0;
+    aux = math.compile(func);
+    prev = aux.evaluate({x: (0 - canvas.width / 2)});
     prev += canvas.height / 2;
     prev *= 10;
     ctx.lineWidth = 0.2;
@@ -73,31 +88,36 @@ function graficarFuncion() {
 
     ctx.moveTo(0, prev);
 
-    var id = setInterval(graficarFuncionAnimada, 1);
-    var auxX;
-    var result;
+    id = setInterval(graficarFuncionAnimada, 1);
 
-    function graficarFuncionAnimada() {
-        ctx.beginPath();
-        if (i == canvas.width) {
-            clearInterval(id);
-        } else {
-            try {
-                auxX = i - canvas.width / 2;
-                result = aux.evaluate({x: auxX});
-                result *= 10;
-                result += canvas.height / 2;
-                ctx.moveTo(i - 1, prev);
-                ctx.lineTo(i, result);
-                prev = result;
-            } catch (a) {
 
-            }
+}
 
-            i++;
-            ctx.stroke();
-            ctx.closePath();
+/**
+ * Funcion utilizada en graficarFuncion() para poder graficar a lo largo de un tiempo corto la Funcion dada por el usuario. Para explicacion mas en detalle de el grafico ver graficarFuncion().
+ * @method graficarFuncionAnimada
+ *
+ */
+function graficarFuncionAnimada() {
+    ctx.beginPath();
+    if (iAux == canvas.width) {
+        clearInterval(id);
+    } else {
+        try {
+            auxX = iAux - canvas.width / 2;
+            result = aux.evaluate({x: auxX});
+            result *= 10;
+            result += canvas.height / 2;
+            ctx.moveTo(iAux - 1, prev);
+            ctx.lineTo(iAux, result);
+            prev = result;
+        } catch (a) {
+
         }
+
+        iAux++;
+        ctx.stroke();
+        ctx.closePath();
     }
 }
 
@@ -112,6 +132,7 @@ function updateVal() {
     var cons = el.tipoFuncion;
     cons.value = radios.value;
 }
+
 /**
  * Funcion maestra, llamada cuando el usuario aprieta el boton de graficar. Busca si el termino dentro de la funcion trigonometrica es un numero cuando se reemplazan
  * las x por 1 llamando a EC(). De serlo grafica la funcion y calcula su paridad. De no serlo muestra mensaje de error y lo reemplaza por X.
@@ -122,12 +143,12 @@ function botongraficar() {
     if (i == 1) {
         encontrarParidad();
         graficarFuncion();
-    }
-    else {
+    } else {
         alert("Se ingreso un valor invalido en el termino de adentro de la funcion, asegurese de que los términos esten multiplicados u operados entre sí, y de no usar letras que no sean x.");
         document.getElementById("Input2").value = "x";
     }
 }
+
 /**
  * Descripción
  * @method Nombre de la función
@@ -137,11 +158,11 @@ function anadiraString(sign) {
     var funcL = document.getElementById("formulario").elements.argX;
     funcL.value += sign;
 }
+
 /**
  * Validador del Input del usuario. Toma el valor dado en argX y prueba si es un numero compilandolo mediante math.compile y math.evaluate.
  * Si el usuario ingreso valores extraños (x se reemplaza por 1 al calcular), el evaluate falla, se sale del try y se retorna 0 (error).
  * @method EC
- * @param Parámetro A
  * @return 1 si es compilable, 0 si no.
  */
 function EC() {
@@ -150,11 +171,11 @@ function EC() {
     try {
         var prev = aux.evaluate({x: (1)});
         return 1;
-    }
-    catch (a) {
+    } catch (a) {
         return 0;
     }
 }
+
 /**
  * Calcula si la funcion es par, impar o ninguna de las dos y muestra el resultado de esto por outputParidad
  * @method encontrarParidad
@@ -163,8 +184,7 @@ function encontrarParidad() {
     var funcL = document.getElementById("formulario").elements;
     if (document.getElementById("formulario").elements.valFuncInt.value == "grados") {
         var funcP = String(funcL.funcion.value) + "*" + String(funcL.trigF.value) + "((" + String(funcL.argX.value) + ")*pi/180)";
-    }
-    else {
+    } else {
         var funcP = String(funcL.funcion.value) + "*" + String(funcL.trigF.value) + "(" + String(funcL.argX.value) + ")";
     }
     var func = funcP.split('').join('');
@@ -172,12 +192,10 @@ function encontrarParidad() {
     var aux = math.compile(func);
     if (aux.evaluate({x: 1}) == aux.evaluate({x: -1})) {
         document.getElementById("outputParidad").value = "Funcion Par";
-    }
-    else if (aux.evaluate({x: 1}) == aux.evaluate({x: -1}) * -1) {
+    } else if (aux.evaluate({x: 1}) == aux.evaluate({x: -1}) * -1) {
         document.getElementById("outputParidad").value = "Funcion Impar";
 
-    }
-    else {
+    } else {
         document.getElementById("outputParidad").value = "Funcion No Impar ni Par";
     }
 
