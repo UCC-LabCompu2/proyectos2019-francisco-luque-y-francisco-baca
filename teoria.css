@@ -2,11 +2,10 @@ img{
     width: 100px;
 }
 body{
-    background-color: wheat;
     font-family: 'Gentium Basic', serif;
 }
  h1{
-
+     margin-left: 300px
  }
  .creditos {
      position: fixed;
@@ -54,23 +53,7 @@ body{
     top: 480px;
     display: inline-block
 }
-
-/*Capaz aca cambia los colores pancho*/
-a:link {
-    color: #62ccff;
-}
-
-
-a:visited {
-    color: #dc33ff;
-}
-
-
-a:hover {
-    color: #659fff;
-}
-
-
-a:active {
-    color: #0d78ff;
+.relative1{
+    position: relative;
+    right: -800px
 }

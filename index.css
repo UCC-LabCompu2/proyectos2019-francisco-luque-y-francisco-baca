@@ -5,22 +5,24 @@ img {
 body {
     background-color: wheat;
     font-family: 'Gentium Basic', serif;
+
 }
 
-
 h1 {
-
+    margin-left: 350px
 }
 
 .relative2 {
     position: relative;
     width: 600px;
     height: 320px;
+    margin-left: 300px;
+    margin-top: 130px;
 }
 
 .absolute2 {
     position: absolute;
-    top: 120px;
+    top: 220px;
     right: 400px;
     width: 300px;
     height: 200px;
@@ -32,7 +34,7 @@ h1 {
     width: 100px;
 }*/
 .inputs {
-    font-family: 'Gentium Basic', serif;
+
 }
 
 button {
@@ -59,35 +61,18 @@ button {
 .inputfunc {
 
 }
-
-#aux3{
-    display: none;
-    background-color: yellow;
-    padding: 20px;
+.relative1{
+    position: relative;
+    right: -800px
+}
+h2{
+    margin-top: -3px;
 }
 
-a#aux2:hover #aux3{
-    display: block;
+.Resultados{
+margin-left: 200px;
 }
 
-
-/*Capaz aca cambia los colores pancho*/
-a:link {
-    color: #62ccff;
+.Resultant{
+    position:relative;
 }
-
-
-a:visited {
-    color: #dc33ff;
-}
-
-
-a:hover {
-    color: #659fff;
-}
-
-
-a:active {
-    color: #0d78ff;
-}
-
